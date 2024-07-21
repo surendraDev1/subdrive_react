@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Keycloak from 'keycloak-js';
+import CarSearch from '../carSearch/carSearch';
 import './home.css';
 
 const Home: React.FC = () => {
-    const [showOptions, setShowOptions] = useState(false);
     const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
     const [keycloak, setKeycloak] = useState<Keycloak | null>(null);
     const nav = useNavigate();
@@ -68,10 +68,7 @@ const Home: React.FC = () => {
         <div className="home-container">
             <div className="header">
                 <div className="left-side">
-                    <h1>Suguna Cars</h1>
-                </div>
-                <div className="search-bar">
-                    <input type="text" placeholder="Example search for Innova in your location..." />
+                    <h1>SubDrive Cars</h1>
                 </div>
                 <div className="right-side">
                     <button onClick={handleButtonClick}>
@@ -79,6 +76,11 @@ const Home: React.FC = () => {
                     </button>
                     <button onClick={handleHostCarClick}>Host your car</button>
                     <button>Rent a car</button>
+                </div>
+            </div>
+            <div className="body">
+                <div className="search-bar">
+                    <CarSearch />
                 </div>
             </div>
             <div className="image-container">

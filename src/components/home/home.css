@@ -1,72 +1,63 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Adjust as needed */
+  align-items: center;
+  padding: 0px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #f5f5f5; /* Adjust as needed */
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 0px;
 }
 
 .left-side {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .right-side {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+}
+
+.right-side button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.right-side button:hover {
+  background-color: #0056b3;
 }
 
 .search-bar {
-    display: flex;
-    align-items: center;
-    width: 100%; /* Fill the available width for the search bar */
-    max-width: 600px; /* Adjust as needed for length */
-    margin: 0 auto; /* Center horizontally */
-    margin-top: 20px; 
-  }
-  
-  .search-bar input {
-    width: 100%; /* Fill the available width for the input */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    border-right: none;
-  }
-  
-  .search-bar button {
-    margin-left: -40px; /* Position the button over the input */
-    padding: 10px 20px;
-    background-color: #f8f9fa; /* Adjust as needed */
-    color: #333;
-    border: 1px solid #ccc;
-    border-left: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-  }
-  
-  .search-bar button:hover {
-    background-color: #e9ecef; /* Adjust as needed */
-  }
-  
-  .search-bar button img {
-    width: 16px;
-    height: 16px;
-  }
-  
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
 
-.login-option {
-  /* Add any additional styles for the login option */
+.image-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.location-info {
+  margin-top: 20px;
+  font-size: 1rem;
 }
