@@ -1,3 +1,10 @@
+Suguna cars notes:
+install node,
+ npm install -g npm@latest
+for routing: npm install react-router-dom @types/react-router-dom,  npm install react-router-dom
+install axios for location  npm install axios   , npm install @types/axios, 
+install  keycloak-js @react-keycloak/web for login.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
