@@ -37,27 +37,28 @@ const Home: React.FC = () => {
     };
 
     const handleButtonClick = () => {
-        if (!keycloak) {
-            const newKeycloak = new Keycloak({
-                url: 'YOUR_KEYCLOAK_URL',
-                realm: 'YOUR_REALM',
-                clientId: 'YOUR_CLIENT_ID'
-            });
-            newKeycloak.init({ onLoad: 'login-required' })
-                .then((authenticated) => {
-                    if (authenticated) {
-                        setKeycloak(newKeycloak);
-                    } else {
-                        console.log('not authenticated');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Failed to initialize Keycloak', error);
-                });
-        } else {
-            keycloak.logout();
-            setKeycloak(null);
-        }
+        window.location.href = 'http://localhost:8766/subdrive/login'; // Your backend login endpoint
+        // if (!keycloak) {
+        //     const newKeycloak = new Keycloak({
+        //         url: 'http://localhost:8080/realms/subdrive-rentals',
+        //         realm: 'subdrive-rentals',
+        //         clientId: 'subdrive-rentals'
+        //     });
+        //     newKeycloak.init({ onLoad: 'login-required' })
+        //         .then((authenticated) => {
+        //             if (authenticated) {
+        //                 setKeycloak(newKeycloak);
+        //             } else {
+        //                 console.log('not authenticated');
+        //             }
+        //         })
+        //         .catch((error) => {
+        //             console.error('Failed to initialize Keycloak', error);
+        //         });
+        // } else {
+        //     keycloak.logout();
+        //     setKeycloak(null);
+        // }
     };
 
     const handleHostCarClick = () => {
