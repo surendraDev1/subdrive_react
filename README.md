@@ -66,7 +66,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
      [Keycloak Configuration Guide](https://subdrive3rentals.atlassian.net/wiki/spaces/~712020ec3daae59c2d4b53b467e689f919e45d/pages/8224770/KeyCloak+-+Identity+Access+Management+IAM)
 
 3. **Access Keycloak:**
-   - Open your browser and navigate to `http://localhost:8080`.
+   - Once the container is running, Open your browser and navigate to `http://localhost:8080`to configure keycloak by following above documentation.
    - Log in using the credentials:
      - **Username:** admin
      - **Password:** admin
@@ -84,5 +84,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 6. **Authenticate and Redirect:**
    - Click on the Login button in the frontend application. You will be redirected to Keycloak for authentication.
-   - Use the credentials created in the Keycloak realm to log in.
+   - Use the credentials of the user created in the Keycloak realm to log in.
    - After successful authentication, you will be redirected back to the application.
