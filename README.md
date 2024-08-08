@@ -51,3 +51,38 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# Steps to Launch the Application
+
+1. **Download the Required Packages:**
+   - Clone the following packages to your local machine:
+     - `subdrive-react`
+     - `subdrive_backend_service`
+     - `api_gateway_service_subdrive`
+
+2. **Set Up Keycloak:**
+   - Follow the instructions in this document to configure Keycloak: 
+     [Keycloak Configuration Guide](https://subdrive3rentals.atlassian.net/wiki/spaces/~712020ec3daae59c2d4b53b467e689f919e45d/pages/8224770/KeyCloak+-+Identity+Access+Management+IAM)
+
+3. **Access Keycloak:**
+   - Open your browser and navigate to `http://localhost:8080`.
+   - Log in using the credentials:
+     - **Username:** admin
+     - **Password:** admin
+
+4. **Start Backend Services:**
+   - Launch the following applications:
+     - `api_gateway_service_subdrive`
+     - `subdrive_backend_service`
+
+5. **Run the Frontend Application:**
+   - Once the backend services are up and running, execute the following command in your frontend application directory:
+     ```bash
+     npm start
+     ```
+
+6. **Authenticate and Redirect:**
+   - Click on the Login button in the frontend application. You will be redirected to Keycloak for authentication.
+   - Use the credentials created in the Keycloak realm to log in.
+   - After successful authentication, you will be redirected back to the application.
