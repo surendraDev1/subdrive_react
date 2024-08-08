@@ -1,8 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 interface Car {
-  id: number; // Add an ID for identifying the car
+  id: number;
   title: string;
   description: string;
   dailyRate: number;
@@ -85,64 +85,36 @@ const carListings: Car[] = [
   },
 ];
 
-const CarList: React.FC = () => {
-  const navigate = useNavigate();
+const CarDetails: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const carId = parseInt(id || '0', 10);
+  const car = carListings.find(car => car.id === carId);
 
-  const handleRowClick = (carId: number) => {
-    navigate(`/car-details/${carId}`);
-  };
+  if (!car) {
+    return <div>Car not found</div>;
+  }
 
   return (
-    <div className="car-listings-container">
-      <h1>Available Car Listings</h1>
-      <table className="car-listings-table">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Daily Rate</th>
-            <th>Weekly Rate</th>
-            <th>Monthly Rate</th>
-            <th>Availability</th>
-            <th>Location</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Color</th>
-            <th>VIN</th>
-            <th>Mileage</th>
-            <th>Transmission</th>
-            <th>Fuel Type</th>
-            <th>Features</th>
-          </tr>
-        </thead>
-        <tbody>
-          {carListings.map((car) => (
-            <tr key={car.id} onClick={() => handleRowClick(car.id)} style={{ cursor: 'pointer' }}>
-              <td><img src={car.imageUrl} alt={car.title} className="car-image" /></td>
-              <td>{car.title}</td>
-              <td>{car.description}</td>
-              <td>${car.dailyRate}/day</td>
-              <td>${car.weeklyRate}/week</td>
-              <td>${car.monthlyRate}/month</td>
-              <td>{car.availability.join(', ')}</td>
-              <td>{car.location}</td>
-              <td>{car.make}</td>
-              <td>{car.model}</td>
-              <td>{car.year}</td>
-              <td>{car.color}</td>
-              <td>{car.vin}</td>
-              <td>{car.mileage} miles</td>
-              <td>{car.transmission}</td>
-              <td>{car.fuelType}</td>
-              <td>{car.features.join(', ')}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="car-details-container">
+      <h1>{car.title}</h1>
+      <img src={car.imageUrl} alt={car.title} className="car-details-image" />
+      <p><strong>Description:</strong> {car.description}</p>
+      <p><strong>Daily Rate:</strong> ${car.dailyRate}</p>
+      <p><strong>Weekly Rate:</strong> ${car.weeklyRate}</p>
+      <p><strong>Monthly Rate:</strong> ${car.monthlyRate}</p>
+      <p><strong>Availability:</strong> {car.availability.join(', ')}</p>
+      <p><strong>Location:</strong> {car.location}</p>
+      <p><strong>Make:</strong> {car.make}</p>
+      <p><strong>Model:</strong> {car.model}</p>
+      <p><strong>Year:</strong> {car.year}</p>
+      <p><strong>Color:</strong> {car.color}</p>
+      <p><strong>VIN:</strong> {car.vin}</p>
+      <p><strong>Mileage:</strong> {car.mileage} miles</p>
+      <p><strong>Transmission:</strong> {car.transmission}</p>
+      <p><strong>Fuel Type:</strong> {car.fuelType}</p>
+      <p><strong>Features:</strong> {car.features.join(', ')}</p>
     </div>
   );
 };
 
-export default CarList;
+export default carDetails;
