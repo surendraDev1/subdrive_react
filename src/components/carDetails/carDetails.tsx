@@ -117,4 +117,4 @@ const CarDetails: React.FC = () => {
   );
 };
 
-export default carDetails;
+export default CarDetails;
