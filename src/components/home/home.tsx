@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Keycloak from 'keycloak-js';
 import CarSearch from '../carSearch/carSearch';
@@ -12,6 +12,8 @@ interface HeaderProps {
     keycloak: Keycloak | null;
     handleButtonClick: () => void;
     handleHostCarClick: () => void;
+    carListingManagement: () => void;
+    handleMyAccoungtClick: () => void;
 }
 
 interface HeroSectionProps {
@@ -108,6 +110,12 @@ const Home: React.FC = () => {
         nav('/host-car');
     };
 
+    const carListingManagement = () => {
+        nav('/carListingDashBoard');
+    };
+    const handleMyAccoungtClick = () => {
+        nav('/myAccount');
+    };
     const handleSearch = () => {
         // Implement search functionality here
         console.log('Search params:', searchParams);
@@ -115,27 +123,37 @@ const Home: React.FC = () => {
 
     return (
         <div className="home-container">
-            <Header 
-                keycloak={keycloak} 
-                handleButtonClick={handleButtonClick} 
-                handleHostCarClick={handleHostCarClick} 
-            />
-            <HeroSection searchParams={searchParams} setSearchParams={setSearchParams} handleSearch={handleSearch} />
-            {/* <CarSearch searchParams={searchParams} handleSearch={handleSearch} /> */}
-            <FeaturedCars />
-            <HowItWorks/>
-            <Testimonials />
-            <div className="image-container">
-                <img src="assets/7d00838f-8c8d-4f26-bbd7-4dafc3c40534.jpg" alt="some car" style={{ width: '70%' }} />
-            </div>
-            <Footer />
-            <LocationInfo location={location} />
-            <UserWelcome keycloak={keycloak} />
-        </div>
+        <Header 
+            keycloak={keycloak} 
+            handleButtonClick={handleButtonClick} 
+            handleHostCarClick={handleHostCarClick} 
+            carListingManagement={carListingManagement}
+            handleMyAccoungtClick={handleMyAccoungtClick}
+        />
+        <Routes>
+            <Route path="/" element={
+                <>
+                    <HeroSection searchParams={searchParams} setSearchParams={setSearchParams} handleSearch={handleSearch} />
+                    <FeaturedCars />
+                    <HowItWorks/>
+                    <Testimonials />
+                    <div className="image-container">
+                        <img src="assets/7d00838f-8c8d-4f26-bbd7-4dafc3c40534.jpg" alt="some car" style={{ width: '70%' }} />
+                    </div>
+                </>
+            } />
+            <Route path="/search" element={<SearchSection />} />
+            <Route path="/listing/:id" element={<ListingSection />} />
+            <Route path="/booking/:id" element={<BookingSection />} />
+        </Routes>
+        <Footer />
+        <LocationInfo location={location} />
+        <UserWelcome keycloak={keycloak} />
+    </div>
     );
 };
 
-const Header: React.FC<HeaderProps> = ({ keycloak, handleButtonClick, handleHostCarClick }) => (
+const Header: React.FC<HeaderProps> = ({ keycloak, handleButtonClick, handleHostCarClick, carListingManagement, handleMyAccoungtClick}) => (
     <div className="header">
         <div className="left-side">
             <h1>SubDrive Cars</h1>
@@ -144,8 +162,12 @@ const Header: React.FC<HeaderProps> = ({ keycloak, handleButtonClick, handleHost
             <button onClick={handleButtonClick}>
                 {keycloak && keycloak.authenticated ? 'Logout' : 'Login'}
             </button>
+            <button >Sign Up</button>
+            <button >Learn More</button>
             <button onClick={handleHostCarClick}>Host your car</button>
-            <button>Rent a car</button>
+            <button >Rent A Car</button>
+            <button onClick={handleMyAccoungtClick}>My Account</button>
+            {/* <button onClick={carListingManagement}>your cars list</button> */}
         </div>
     </div>
 );
@@ -243,5 +265,23 @@ const UserWelcome: React.FC<UserWelcomeProps> = ({ keycloak }) => {
       </div>
     );
   };  
+
+  const SearchSection: React.FC = () => (
+    <div className="search-section">
+        {/* Implement search functionality here */}
+    </div>
+);
+
+const ListingSection: React.FC = () => (
+    <div className="listing-section">
+        {/* Implement listing details here */}
+    </div>
+);
+
+const BookingSection: React.FC = () => (
+    <div className="booking-section">
+        {/* Implement booking process here */}
+    </div>
+);
 
 export default Home;
