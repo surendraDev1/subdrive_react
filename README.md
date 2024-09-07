@@ -86,3 +86,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
    - Click on the Login button in the frontend application. You will be redirected to Keycloak for authentication.
    - Use the credentials of the user created in the Keycloak realm to log in.
    - After successful authentication, you will be redirected back to the application.
+
+ 7. **Added Material ui**
+
